@@ -1,0 +1,10 @@
+# MDXRules.yml
+extends: substitution
+message: "Avoid using '{{ .Match }}' in MDX files. Consider using '{{ .Suggestion }}'."
+ignorecase: true
+nonword: true
+scope: text
+swap:
+  <br>: "<br />"
+  <img>: "<img />"
+  <hr>: "<hr />"

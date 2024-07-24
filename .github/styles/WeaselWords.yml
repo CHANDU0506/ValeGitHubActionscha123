@@ -1,0 +1,23 @@
+# WeaselWords.yml
+extends: existence
+message: "Avoid using weasel words like '{{.Match}}'. Be more specific."
+ignorecase: true
+nonword: true
+tokens:
+  - many
+  - various
+  - very
+  - fairly
+  - several
+  - extremely
+  - numerous
+  - quite
+  - few
+  - mostly
+  - significant
+  - substantial
+  - relatively
+  - seems
+  - appears
+  - about
+  - some

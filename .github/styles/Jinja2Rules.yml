@@ -1,0 +1,9 @@
+# Jinja2Rules.yml
+extends: substitution
+message: "Avoid using '{{ .Match }}' in Jinja2 templates. Consider using '{{ .Suggestion }}'."
+ignorecase: true
+nonword: true
+scope: text
+swap:
+  raw: "safe"
+  include: "import"

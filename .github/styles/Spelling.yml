@@ -1,0 +1,11 @@
+# Spelling.yml
+extends: spelling
+message: "'{{ .Match }}' is a common misspelling. Consider '{{ .Suggestion }}'."
+ignorecase: true
+level: error
+swap:
+  teh: "the"
+  adn: "and"
+  recieve: "receive"
+  occured: "occurred"
+  seperate: "separate"

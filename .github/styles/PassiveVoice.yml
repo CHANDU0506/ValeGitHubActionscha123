@@ -1,0 +1,11 @@
+# PassiveVoice.yml
+extends: substitution
+message: "Avoid passive voice. Consider rephrasing."
+ignorecase: true
+nonword: true
+scope: text
+swap:
+  - was
+  - were
+  - is
+  - are
