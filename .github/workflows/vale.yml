@@ -1,37 +1,30 @@
-name: Vale Lint
-
+# This is a basic workflow to help you get started with Actions
+ 
+name: Vale-Linting
+ 
+# Controls when the action will run.
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    paths:
-      - '**/*.md'
-      - '**/*.mdx'
-      - '**/*.j2'
-  pull_request:
-    paths:
-      - '**/*.md'
-      - '**/*.mdx'
-      - '**/*.j2'
-
+    branches: [ main ]
+ 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+ 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Checkout
+      uses: actions/checkout@master
+     
+    - name: Vale
+      uses: errata-ai/vale-action@v1.4.2
       with:
-        python-version: '3.x'
-
-    - name: Install Vale
-      run: |
-        curl -sSfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
-        tar -xzf vale.tar.gz
-        sudo mv vale /usr/local/bin/
-        rm vale.tar.gz
-
-    - name: Run Vale
-      run: |
-        vale --output=JSON . | jq .
+        debug: true
+        styles: |
+          https://github.com/errata-ai/write-good/releases/latest/download/write-good.zip
+          https://github.com/errata-ai/Google/releases/latest/download/Google.zip
+          https://github.com/errata-ai/Joblint/releases/download/v0.4.1/Joblint.zip
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
